@@ -1,5 +1,5 @@
 //
-//  iTunesAPIResult.swift
+//  ITunesArtistsAPIResult.swift
 //  iTunesArtists
 //
 //  Created by Carlos López on 23/11/17.
@@ -9,14 +9,14 @@
 import Foundation
 import Unbox
 
-struct ITunesAPIResult {
+struct ITunesArtistsAPIResult {
     let resultCount: Int
-    let results: [MediaItem]
+    let results: [Artist]
 }
 
 // MARK: - Unboxable
 
-extension ITunesAPIResult : Unboxable {
+extension ITunesArtistsAPIResult : Unboxable {
     init(unboxer: Unboxer) throws {
         resultCount = try unboxer.unbox(key: "resultCount")
         results = try unboxer.unbox(key: "results")

@@ -9,5 +9,5 @@
 import Foundation
 
 protocol ListModuleInterface {
-    
+    func userDidEnter(text: String?)
 }

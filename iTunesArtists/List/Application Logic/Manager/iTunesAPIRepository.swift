@@ -10,14 +10,12 @@ import Foundation
 import Alamofire
 import UnboxedAlamofire
 
-typealias CompletionBlock = (_ result: [Artist]?, _ error: Error?) -> Void
-
 struct iTunesAPIRepository {
     
-    let apiUrl = "https://itunes.apple.com/search?media=music&entity=allArtist&attribute=allArtistTerm&term=%@"
+    let artistUrl = "https://itunes.apple.com/search?media=music&entity=musicArtist&attribute=artistTerm&term=%@"
+    let albumsUrl = "https://itunes.apple.com/lookup?id=%ld&entity=album&limit=%ld"
     
     init() {
-        
     }
 }
 
@@ -25,19 +23,35 @@ struct iTunesAPIRepository {
 
 extension iTunesAPIRepository : iTunesAPIRepositoryInterface {
     
-    func requestArtists(byName name: String, completionHandler: CompletionBlock) {
-        let url = String(format: apiUrl, name)
-        Alamofire.request(url, method: .get).responseObject { (response: DataResponse<ITunesAPIResult>) in
+    func requestArtistList(byName name: String, completionHandler: @escaping ([Artist]?, Error?) -> Void) {
+        let url = String(format: artistUrl, name)
+        Alamofire.request(url, method: .get).responseObject { (response: DataResponse<ITunesArtistsAPIResult>) in
             // handle response
             let result = response.result.value
             
             // handle error
             if let error = response.result.error as? UnboxedAlamofireError {
                 print("error: \(error.description)")
-                completionHandler(nil, nil)
+                completionHandler(nil, response.result.error)
                 return
             }
-            completionHandler(result?.results as! [Artist], nil)
+            completionHandler(result?.results, nil)
+        }
+    }
+    
+    func requestAlbumList(byArtistId artistId: Double, numberOfAlbums: Int = 2, completionHandler: @escaping AlbumsCompletionBlock) {
+        let url = String(format: albumsUrl, artistId, numberOfAlbums)
+        Alamofire.request(url, method: .get).responseObject { (response: DataResponse<ITunesAlbumsAPIResult>) in
+            // handle response
+            let result = response.result.value
+            
+            // handle error
+            if let error = response.result.error as? UnboxedAlamofireError {
+                print("error: \(error.description)")
+                completionHandler(nil, response.result.error)
+                return
+            }
+            completionHandler(result?.results, nil)
         }
     }
 }

@@ -16,10 +16,10 @@ enum WrapperType: String, UnboxableEnum {
 
 protocol MediaItem {
     var wrapperType: WrapperType { get }
-    var primaryGenreName: String { get }
+     var primaryGenreName: String? { get }
     var artistName: String { get }
-    var artistId: Int { get }
-    var amgArtistId: Int { get }
+    var artistId: Double { get }
+     var amgArtistId: Double? { get }
 }
 
 // MARK: - Unboxable

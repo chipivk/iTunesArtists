@@ -10,12 +10,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "iTunesArtists/List/Application Logic/Manager/iTunesAPIRepository.swift"
-            timestampString = "533141929.58745"
+            timestampString = "533148939.568054"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "requestArtists(byName:completionHandler:)"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "requestArtistList(byName:completionHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iTunesArtists/List/Application Logic/Interactor/ListInteractor.swift"
+            timestampString = "533150032.036407"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "searchArtist(withText:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

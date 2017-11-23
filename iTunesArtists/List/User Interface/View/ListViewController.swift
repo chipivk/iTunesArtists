@@ -83,7 +83,7 @@ extension ListViewController : UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
+        eventHandler?.userDidEnter(text: searchBar.text)
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {

@@ -14,6 +14,8 @@ class ListPresenter {
     weak var userInterface: ListViewInterface?
     var rootRouting: RootRouting?
     
+    var artist: [Artist]?
+    
     init() {
         
     }
@@ -22,7 +24,12 @@ class ListPresenter {
 // MARK: - ListModuleInterface
 
 extension ListPresenter : ListModuleInterface {
-    
+    func userDidEnter(text: String?) {
+        guard let text = text else {
+            return
+        }
+        interactor?.searchArtist(withText: text)
+    }
 }
 
 // MARK: - ListInteractorOutput

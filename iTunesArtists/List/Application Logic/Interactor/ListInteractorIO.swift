@@ -9,7 +9,7 @@
 import Foundation
 
 protocol ListInteractorInput: class {
-    
+    func searchArtist(withText text: String)
 }
 
 protocol ListInteractorOutput: class {

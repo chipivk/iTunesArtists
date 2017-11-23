@@ -9,15 +9,15 @@
 import Foundation
 import Unbox
 
-struct Album: MediaItem, Equatable {
+struct Album: Equatable {
     let wrapperType: WrapperType
     let primaryGenreName: String
     let artistName: String
-    let artistId: Int
-    let amgArtistId: Int
+    let artistId: Double
+    let amgArtistId: Double
     
     let collectionType: String
-    let collectionId: Int
+    let collectionId: Double
     let collectionName: String
     let collectionCensoredName: String
     let artistViewUrl: URL
