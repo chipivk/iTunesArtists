@@ -10,5 +10,5 @@ import Foundation
 
 protocol ListItemViewProtocol {
     func set(name: String?, musicGenre: String?)
-    func addAlbums(_albums: [AlbumDisplayData])
+    func addAlbums(_ albums: [AlbumDisplayData])
 }

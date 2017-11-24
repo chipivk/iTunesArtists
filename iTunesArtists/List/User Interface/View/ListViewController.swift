@@ -119,7 +119,7 @@ extension ListViewController : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ArtistTableViewCell.cellIdentifier) as! ArtistTableViewCell
-        eventHandler?.setContent(toView: cell as! ListItemViewProtocol, indexPath: indexPath)
+        eventHandler?.setContent(toView: cell as ListItemViewProtocol, indexPath: indexPath)
         
         return cell
     }

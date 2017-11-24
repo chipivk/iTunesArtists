@@ -11,5 +11,5 @@ import UIKit
 struct AlbumDisplayData {
     let name: String
     let year: String
-    let thumbnail: UIImage
+    let thumbnailURL: URL
 }

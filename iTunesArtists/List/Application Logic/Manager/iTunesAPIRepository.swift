@@ -24,7 +24,7 @@ struct iTunesAPIRepository {
 extension iTunesAPIRepository : iTunesAPIRepositoryInterface {
     
     func requestArtistList(byName name: String, completionHandler: @escaping ([Artist]?, Error?) -> Void) {
-        let url = String(format: artistUrl, name)
+        let url = String(format: artistUrl, name.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!)
         Alamofire.request(url, method: .get).responseObject { (response: DataResponse<ITunesArtistsAPIResult>) in
             // handle response
             let result = response.result.value

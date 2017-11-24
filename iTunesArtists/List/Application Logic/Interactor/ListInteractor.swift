@@ -14,8 +14,6 @@ class ListInteractor {
     
     var artists: [Artist]?
     
-    var artistsAndAlbums: [MediaItem]?
-    
     init() {
     }
 }
@@ -26,23 +24,18 @@ extension ListInteractor : ListInteractorInput {
     
     func searchArtist(withText text: String) {
         artists = nil
-        artistsAndAlbums = nil
         output?.reloadData()
         repository?.requestArtistList(byName: text, completionHandler: { (artistList, error) in
             guard let artistList = artistList else {
-                print("Error: \(error)")
+                print("Error: \(String(describing: error))")
                 return
             }
             print("Artists: \(artistList)")
             self.artists = artistList
-            self.artistsAndAlbums = artistList
-            
-//            output
             
             for artist in artistList {
                 self.searchAlbums(byArtistId: artist.artistId)
             }
-//            output.
         })
     }
     
@@ -51,19 +44,14 @@ extension ListInteractor : ListInteractorInput {
             let artist = self.artists?.first(where: { (a) -> Bool in
                 return a.artistId == artistId
             })
-//            let artistIndex = self.artistsAndAlbums?.index(where: { (item) -> Bool in
-//                return item.artistId == artistId
-//            })
+            
             guard let albums = albums, var artistFounded = artist, albums.count > 0 else {
                 return
             }
-            
+            let index = self.artists!.index(of: artistFounded)!
+            artistFounded.albums.removeAll()
             artistFounded.albums.append(contentsOf: albums)
-            
-//            for (i, album) in albums.enumerated() {
-//
-//                self.artistsAndAlbums?.insert(album, at: index + i)
-//            }
+            self.artists![index] = artistFounded
             self.output?.reloadData()
         })
     }

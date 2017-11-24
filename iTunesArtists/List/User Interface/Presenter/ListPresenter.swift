@@ -50,10 +50,17 @@ extension ListPresenter : ListModuleInterface {
     }
     
     func setContent(toView view: ListItemViewProtocol, indexPath: IndexPath) {
-        let item = interactor?.item(atIndexPath: indexPath)
-        
-        view.set(name: item?.artistName, musicGenre: item?.primaryGenreName)
-        
+        guard let item = interactor?.item(atIndexPath: indexPath) else {
+            return
+        }
+        var albums: [AlbumDisplayData] = []
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy"
+        for album in item.albums {
+            albums.append(AlbumDisplayData(name: album.collectionName ?? "Unknow", year: dateFormatter.string(from: album.releaseDate), thumbnailURL: album.artworkUrl60))
+        }
+        view.set(name: item.artistName, musicGenre: item.primaryGenreName)
+        view.addAlbums(albums)
     }
 }
 

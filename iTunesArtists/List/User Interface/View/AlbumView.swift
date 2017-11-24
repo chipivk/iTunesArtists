@@ -47,5 +47,23 @@ import UIKit
         
         return view
     }
+}
 
+extension AlbumView {
+    func set(album: AlbumDisplayData, showDiscographyLabel: Bool = false) {
+        discographicLabel.isHidden = !showDiscographyLabel
+        albumNameLabel.text = album.name
+        yearLabel.text = album.year
+        URLSession.shared.dataTask(with: album.thumbnailURL) { data, response, error in
+            guard let data = data else {
+                DispatchQueue.main.async {
+                    self.thubmnailImageView.image = nil
+                }
+                return
+            }
+            DispatchQueue.main.async {
+                self.thubmnailImageView.image = UIImage(data: data)
+            }
+        }.resume()
+    }
 }
