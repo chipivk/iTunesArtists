@@ -23,7 +23,11 @@ class ListInteractor {
 // MARK: - ListInteractorInput
 
 extension ListInteractor : ListInteractorInput {
+    
     func searchArtist(withText text: String) {
+        artists = nil
+        artistsAndAlbums = nil
+        output?.reloadData()
         repository?.requestArtistList(byName: text, completionHandler: { (artistList, error) in
             guard let artistList = artistList else {
                 print("Error: \(error)")
@@ -32,6 +36,8 @@ extension ListInteractor : ListInteractorInput {
             print("Artists: \(artistList)")
             self.artists = artistList
             self.artistsAndAlbums = artistList
+            
+//            output
             
             for artist in artistList {
                 self.searchAlbums(byArtistId: artist.artistId)
@@ -42,16 +48,23 @@ extension ListInteractor : ListInteractorInput {
     
     func searchAlbums(byArtistId artistId: Double, numberOfAlbums: Int = 2) {
         repository?.requestAlbumList(byArtistId: artistId, numberOfAlbums: numberOfAlbums, completionHandler: { (albums, error) in
-            let artistIndex = self.artistsAndAlbums?.index(where: { (item) -> Bool in
-                return item.artistId == artistId
+            let artist = self.artists?.first(where: { (a) -> Bool in
+                return a.artistId == artistId
             })
-            guard let albums = albums, let index = artistIndex else {
+//            let artistIndex = self.artistsAndAlbums?.index(where: { (item) -> Bool in
+//                return item.artistId == artistId
+//            })
+            guard let albums = albums, var artistFounded = artist, albums.count > 0 else {
                 return
             }
             
-            for (i, album) in albums.enumerated() {
-                self.artistsAndAlbums?.insert(album, at: index + i)
-            }
+            artistFounded.albums.append(contentsOf: albums)
+            
+//            for (i, album) in albums.enumerated() {
+//
+//                self.artistsAndAlbums?.insert(album, at: index + i)
+//            }
+            self.output?.reloadData()
         })
     }
     
@@ -60,11 +73,10 @@ extension ListInteractor : ListInteractorInput {
     }
     
     func numberOfItems(inSection section: Int) -> Int {
-        return artistsAndAlbums?.count ?? 0
+        return artists?.count ?? 0 //artistsAndAlbums?.count ?? 0
     }
     
-    func itemAtIndexPath(indexPath: NSIndexPath) -> MediaItem {
-        let item = artistsAndAlbums![indexPath.row]
-        return item //NewsManager.sectionNewsItemFrom(new: new)
+    func item(atIndexPath indexPath: IndexPath) -> Artist {
+        return artists![indexPath.row]
     }
 }

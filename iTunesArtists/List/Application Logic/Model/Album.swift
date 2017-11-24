@@ -17,9 +17,9 @@ struct Album: MediaItem, Equatable {
     let artistId: Double
     let amgArtistId: Double?
     
-    let collectionType: String
-    let collectionId: Double
-    let collectionName: String
+    let collectionType: String?
+    let collectionId: Double?
+    let collectionName: String?
     let collectionCensoredName: String
     let artistViewUrl: URL
     let collectionViewUrl: URL
@@ -40,31 +40,68 @@ func ==(left: Album, right: Album) -> Bool {
 
 // MARK: - Unboxable
 
-extension Album : Unboxable {
-    init(unboxer: Unboxer) throws {
-        wrapperType = try unboxer.unbox(key: "wrapperType")
-        primaryGenreName = unboxer.unbox(key: "primaryGenreName")
-        artistName = try unboxer.unbox(key: "artistName")
-        artistId = try unboxer.unbox(key: "artistId")
-        amgArtistId = unboxer.unbox(key: "amgArtistId")
+//extension Album : Unboxable {
+//    init(unboxer: Unboxer) throws {
+//        wrapperType = try unboxer.unbox(key: "wrapperType")
+//        primaryGenreName = unboxer.unbox(key: "primaryGenreName")
+//        artistName = try unboxer.unbox(key: "artistName")
+//        artistId = try unboxer.unbox(key: "artistId")
+//        amgArtistId = unboxer.unbox(key: "amgArtistId")
+//
+//        collectionType = unboxer.unbox(key: "collectionType")
+//        collectionId = unboxer.unbox(key: "collectionId")
+//        collectionName = unboxer.unbox(key: "collectionName")
+//        collectionCensoredName = try unboxer.unbox(key: "collectionCensoredName")
+//        artistViewUrl = try unboxer.unbox(key: "artistViewUrl")
+//        collectionViewUrl = try unboxer.unbox(key: "collectionViewUrl")
+//        artworkUrl60 = try unboxer.unbox(key: "artworkUrl60")
+//        artworkUrl100 = try unboxer.unbox(key: "artworkUrl100")
+//        collectionPrice = try unboxer.unbox(key: "collectionPrice")
+//        collectionExplicitness = try unboxer.unbox(key: "collectionExplicitness")
+//        trackCount = try unboxer.unbox(key: "trackCount")
+//        copyright = try unboxer.unbox(key: "copyright")
+//        country = try unboxer.unbox(key: "country")
+//        currency = try unboxer.unbox(key: "currency")
+//
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "YYYY-MM-dd'T'HH:mm:ss'Z'"
+//        releaseDate = try unboxer.unbox(key: "releaseDate", formatter: dateFormatter)
+//    }
+//}
+
+extension Album: UnboxableByTransform {
+    public typealias UnboxRawValue = [String : Any]
+    
+    
+    public static func transform(unboxedValue: UnboxRawValue) -> Album? {
+        let wrapperType = unboxedValue["wrapperType"] as? String
+        if let wrapperType = wrapperType, wrapperType == "artist" {
+            return nil
+        }
+        let primaryGenreName = unboxedValue["primaryGenreName"] as! String
+        let artistName = unboxedValue["artistName"] as! String
+        let artistId = unboxedValue["artistId"] as! Double
+        let amgArtistId = unboxedValue["amgArtistId"] as? Double
+        let collectionType = unboxedValue["collectionType"] as? String
+        let collectionId = unboxedValue["collectionId"] as? Double
+        let collectionName = unboxedValue["collectionName"] as? String
+        let collectionCensoredName = unboxedValue["collectionCensoredName"] as! String
+        let artistViewUrl = URL(string: unboxedValue["artistViewUrl"] as! String)!
         
-        collectionType = try unboxer.unbox(key: "collectionType")
-        collectionId = try unboxer.unbox(key: "collectionId")
-        collectionName = try unboxer.unbox(key: "collectionName")
-        collectionCensoredName = try unboxer.unbox(key: "collectionCensoredName")
-        artistViewUrl = try unboxer.unbox(key: "artistViewUrl")
-        collectionViewUrl = try unboxer.unbox(key: "collectionViewUrl")
-        artworkUrl60 = try unboxer.unbox(key: "artworkUrl60")
-        artworkUrl100 = try unboxer.unbox(key: "artworkUrl100")
-        collectionPrice = try unboxer.unbox(key: "collectionPrice")
-        collectionExplicitness = try unboxer.unbox(key: "collectionExplicitness")
-        trackCount = try unboxer.unbox(key: "trackCount")
-        copyright = try unboxer.unbox(key: "copyright")
-        country = try unboxer.unbox(key: "country")
-        currency = try unboxer.unbox(key: "currency")
+        let collectionViewUrl = URL(string: unboxedValue["collectionViewUrl"] as! String)!
+        let artworkUrl60 = URL(string: unboxedValue["artworkUrl60"] as! String)!
+        let artworkUrl100 = URL(string: unboxedValue["artworkUrl100"] as! String)!
+        let collectionPrice = unboxedValue["collectionPrice"] as! Double
+        let collectionExplicitness = unboxedValue["collectionExplicitness"] as! String
+        let trackCount = unboxedValue["trackCount"] as! Int
+        let copyright = unboxedValue["copyright"] as! String
+        let country = unboxedValue["country"] as! String
+        let currency = unboxedValue["currency"] as! String
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YYYY-MM-dd'T'HH:mm:ss'Z'"
-        releaseDate = try unboxer.unbox(key: "releaseDate", formatter: dateFormatter)
+        let releaseDate = dateFormatter.date(from: unboxedValue["releaseDate"] as! String)!
+        
+        return Album(wrapperType: .collection, primaryGenreName: primaryGenreName, artistName: artistName, artistId: artistId, amgArtistId: amgArtistId, collectionType: collectionType, collectionId: collectionId, collectionName: collectionName, collectionCensoredName: collectionCensoredName, artistViewUrl: artistViewUrl, collectionViewUrl: collectionViewUrl, artworkUrl60: artworkUrl60, artworkUrl100: artworkUrl100, collectionPrice: collectionPrice, collectionExplicitness: collectionExplicitness, trackCount: trackCount, copyright: copyright, country: country, currency: currency, releaseDate: releaseDate)
     }
 }

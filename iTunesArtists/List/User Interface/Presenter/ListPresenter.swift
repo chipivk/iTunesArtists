@@ -14,8 +14,6 @@ class ListPresenter {
     weak var userInterface: ListViewInterface?
     var rootRouting: RootRouting?
     
-    var artist: [Artist]?
-    
     init() {
         
     }
@@ -24,11 +22,38 @@ class ListPresenter {
 // MARK: - ListModuleInterface
 
 extension ListPresenter : ListModuleInterface {
+    
+    func numberOfSections() -> Int {
+        guard let interactor = interactor else {
+            return 0
+        }
+        return interactor.numberOfSections()
+    }
+    
+    func numberOfItems(inSection section: Int) -> Int {
+        guard let interactor = interactor else {
+            return 0
+        }
+        return interactor.numberOfItems(inSection: section)
+    }
+    
     func userDidEnter(text: String?) {
         guard let text = text else {
             return
         }
         interactor?.searchArtist(withText: text)
+        userInterface?.reloadTable()
+    }
+    
+    func didSelectRow(atIndexPath indexPath: IndexPath) {
+        
+    }
+    
+    func setContent(toView view: ListItemViewProtocol, indexPath: IndexPath) {
+        let item = interactor?.item(atIndexPath: indexPath)
+        
+        view.set(name: item?.artistName, musicGenre: item?.primaryGenreName)
+        
     }
 }
 
@@ -36,4 +61,7 @@ extension ListPresenter : ListModuleInterface {
 
 extension ListPresenter : ListInteractorOutput {
     
+    func reloadData() {
+        userInterface?.reloadTable()
+    }
 }

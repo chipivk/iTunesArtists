@@ -25,6 +25,12 @@
 		07896ED81FC7023500844DC5 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07896ED71FC7023500844DC5 /* Artist.swift */; };
 		07896EDA1FC702DA00844DC5 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07896ED91FC702DA00844DC5 /* Album.swift */; };
 		07896EDC1FC7094100844DC5 /* MediaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07896EDB1FC7094100844DC5 /* MediaItem.swift */; };
+		07896EDE1FC82CE100844DC5 /* ListItemViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07896EDD1FC82CE100844DC5 /* ListItemViewProtocol.swift */; };
+		07896EE11FC82F5D00844DC5 /* ArtistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07896EDF1FC82F5D00844DC5 /* ArtistTableViewCell.swift */; };
+		07896EE21FC82F5D00844DC5 /* ArtistTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07896EE01FC82F5D00844DC5 /* ArtistTableViewCell.xib */; };
+		07896EE41FC839FF00844DC5 /* AlbumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07896EE31FC839FF00844DC5 /* AlbumView.swift */; };
+		07896EE61FC83A2F00844DC5 /* AlbumView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 07896EE51FC83A2F00844DC5 /* AlbumView.xib */; };
+		07896EE81FC8411000844DC5 /* AlbumDisplayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07896EE71FC8411000844DC5 /* AlbumDisplayData.swift */; };
 		07B8AF6E1FC73F2800BFB91F /* ITunesAlbumsAPIResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B8AF6D1FC73F2800BFB91F /* ITunesAlbumsAPIResult.swift */; };
 		3C00F93CA69F1D5E2754246A /* Pods_iTunesArtists.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 898BDA514B5A35D08A0E92F6 /* Pods_iTunesArtists.framework */; };
 /* End PBXBuildFile section */
@@ -50,6 +56,12 @@
 		07896ED71FC7023500844DC5 /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
 		07896ED91FC702DA00844DC5 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		07896EDB1FC7094100844DC5 /* MediaItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaItem.swift; sourceTree = "<group>"; };
+		07896EDD1FC82CE100844DC5 /* ListItemViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemViewProtocol.swift; sourceTree = "<group>"; };
+		07896EDF1FC82F5D00844DC5 /* ArtistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistTableViewCell.swift; sourceTree = "<group>"; };
+		07896EE01FC82F5D00844DC5 /* ArtistTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArtistTableViewCell.xib; sourceTree = "<group>"; };
+		07896EE31FC839FF00844DC5 /* AlbumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumView.swift; sourceTree = "<group>"; };
+		07896EE51FC83A2F00844DC5 /* AlbumView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlbumView.xib; sourceTree = "<group>"; };
+		07896EE71FC8411000844DC5 /* AlbumDisplayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDisplayData.swift; sourceTree = "<group>"; };
 		07B8AF6D1FC73F2800BFB91F /* ITunesAlbumsAPIResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ITunesAlbumsAPIResult.swift; sourceTree = "<group>"; };
 		898BDA514B5A35D08A0E92F6 /* Pods_iTunesArtists.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iTunesArtists.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1A8622BB63867A5B4A1B4CB /* Pods-iTunesArtists.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iTunesArtists.release.xcconfig"; path = "Pods/Target Support Files/Pods-iTunesArtists/Pods-iTunesArtists.release.xcconfig"; sourceTree = "<group>"; };
@@ -174,6 +186,11 @@
 			children = (
 				077AE10B1FC6AE8F00DF5FAE /* ListViewController.swift */,
 				077AE1191FC6B02300DF5FAE /* ListViewInterface.swift */,
+				07896EDD1FC82CE100844DC5 /* ListItemViewProtocol.swift */,
+				07896EDF1FC82F5D00844DC5 /* ArtistTableViewCell.swift */,
+				07896EE01FC82F5D00844DC5 /* ArtistTableViewCell.xib */,
+				07896EE31FC839FF00844DC5 /* AlbumView.swift */,
+				07896EE51FC83A2F00844DC5 /* AlbumView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -182,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				077AE10D1FC6AEB700DF5FAE /* ListPresenter.swift */,
+				07896EE71FC8411000844DC5 /* AlbumDisplayData.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -272,8 +290,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07896EE61FC83A2F00844DC5 /* AlbumView.xib in Resources */,
 				077AE0F81FC6A82700DF5FAE /* LaunchScreen.storyboard in Resources */,
 				077AE0F51FC6A82700DF5FAE /* Assets.xcassets in Resources */,
+				07896EE21FC82F5D00844DC5 /* ArtistTableViewCell.xib in Resources */,
 				077AE0F31FC6A82700DF5FAE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -349,15 +369,19 @@
 				077AE10E1FC6AEB700DF5FAE /* ListPresenter.swift in Sources */,
 				07896EDC1FC7094100844DC5 /* MediaItem.swift in Sources */,
 				077AE1181FC6AF8B00DF5FAE /* ListModuleInterface.swift in Sources */,
+				07896EE11FC82F5D00844DC5 /* ArtistTableViewCell.swift in Sources */,
 				077AE1001FC6A9D900DF5FAE /* RootRouting.swift in Sources */,
 				077AE1161FC6AF7500DF5FAE /* iTunesAPIRepository.swift in Sources */,
 				07896EDA1FC702DA00844DC5 /* Album.swift in Sources */,
+				07896EDE1FC82CE100844DC5 /* ListItemViewProtocol.swift in Sources */,
 				07896ED61FC6D99500844DC5 /* ITunesArtistsAPIResult.swift in Sources */,
 				077AE11A1FC6B02300DF5FAE /* ListViewInterface.swift in Sources */,
 				077AE1121FC6AEF100DF5FAE /* ListInteractor.swift in Sources */,
 				077AE10C1FC6AE8F00DF5FAE /* ListViewController.swift in Sources */,
 				07B8AF6E1FC73F2800BFB91F /* ITunesAlbumsAPIResult.swift in Sources */,
+				07896EE81FC8411000844DC5 /* AlbumDisplayData.swift in Sources */,
 				07896ED81FC7023500844DC5 /* Artist.swift in Sources */,
+				07896EE41FC839FF00844DC5 /* AlbumView.swift in Sources */,
 				077AE1101FC6AEE500DF5FAE /* ListInteractorIO.swift in Sources */,
 				077AE0EE1FC6A82700DF5FAE /* AppDelegate.swift in Sources */,
 				07896ED41FC6CB2000844DC5 /* Constants.swift in Sources */,

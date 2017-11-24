@@ -20,6 +20,8 @@ struct Artist: MediaItem, Equatable {
     let artistType: String
     let artistLinkUrl: URL
     let primaryGenreId: String?
+    
+    var albums: [Album] = []
 }
 
 func ==(left: Artist, right: Artist) -> Bool {

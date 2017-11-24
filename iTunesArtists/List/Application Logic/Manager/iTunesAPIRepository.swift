@@ -13,7 +13,7 @@ import UnboxedAlamofire
 struct iTunesAPIRepository {
     
     let artistUrl = "https://itunes.apple.com/search?media=music&entity=musicArtist&attribute=artistTerm&term=%@"
-    let albumsUrl = "https://itunes.apple.com/lookup?id=%ld&entity=album&limit=%ld"
+    let albumsUrl = "https://itunes.apple.com/lookup?id=%.0f&entity=album&limit=%d"
     
     init() {
     }
@@ -41,6 +41,7 @@ extension iTunesAPIRepository : iTunesAPIRepositoryInterface {
     
     func requestAlbumList(byArtistId artistId: Double, numberOfAlbums: Int = 2, completionHandler: @escaping AlbumsCompletionBlock) {
         let url = String(format: albumsUrl, artistId, numberOfAlbums)
+
         Alamofire.request(url, method: .get).responseObject { (response: DataResponse<ITunesAlbumsAPIResult>) in
             // handle response
             let result = response.result.value

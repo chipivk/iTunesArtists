@@ -28,7 +28,7 @@ class ListViewController: UIViewController {
     }
     
     func initializeTableView() {
-//        tableView.register(<#T##cellClass: AnyClass?##AnyClass?#>, forCellReuseIdentifier: <#T##String#>)
+        tableView.register(ArtistTableViewCell.nib(), forCellReuseIdentifier: ArtistTableViewCell.cellIdentifier)
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,7 +62,9 @@ class ListViewController: UIViewController {
 // MARK: - ListViewInterface
 
 extension ListViewController : ListViewInterface {
-    
+    func reloadTable() {
+        tableView.reloadData()
+    }
 }
 
 // MARK: - UISearchBarDelegate
@@ -102,14 +104,23 @@ extension ListViewController : UITableViewDelegate {
 extension ListViewController : UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 0
+        guard let eventHandler = eventHandler else {
+            return 0
+        }
+        return eventHandler.numberOfSections()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        guard let eventHandler = eventHandler else {
+            return 0
+        }
+        return eventHandler.numberOfItems(inSection: section)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: ArtistTableViewCell.cellIdentifier) as! ArtistTableViewCell
+        eventHandler?.setContent(toView: cell as! ListItemViewProtocol, indexPath: indexPath)
+        
+        return cell
     }
 }

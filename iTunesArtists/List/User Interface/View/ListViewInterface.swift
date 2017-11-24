@@ -9,5 +9,5 @@
 import Foundation
 
 protocol ListViewInterface : class {
-    
+    func reloadTable()
 }

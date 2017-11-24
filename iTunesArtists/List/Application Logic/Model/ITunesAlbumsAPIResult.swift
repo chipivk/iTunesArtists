@@ -19,6 +19,6 @@ struct ITunesAlbumsAPIResult {
 extension ITunesAlbumsAPIResult : Unboxable {
     init(unboxer: Unboxer) throws {
         resultCount = try unboxer.unbox(key: "resultCount")
-        results = try unboxer.unbox(key: "results")
+        results = try unboxer.unbox(key: "results", allowInvalidElements: true)
     }
 }
