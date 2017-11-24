@@ -9,12 +9,13 @@
 import Foundation
 import Unbox
 
-struct Album: Equatable {
+struct Album: MediaItem, Equatable {
+    
     let wrapperType: WrapperType
-    let primaryGenreName: String
+    let primaryGenreName: String?
     let artistName: String
     let artistId: Double
-    let amgArtistId: Double
+    let amgArtistId: Double?
     
     let collectionType: String
     let collectionId: Double
@@ -42,10 +43,10 @@ func ==(left: Album, right: Album) -> Bool {
 extension Album : Unboxable {
     init(unboxer: Unboxer) throws {
         wrapperType = try unboxer.unbox(key: "wrapperType")
-        primaryGenreName = try unboxer.unbox(key: "primaryGenreName")
+        primaryGenreName = unboxer.unbox(key: "primaryGenreName")
         artistName = try unboxer.unbox(key: "artistName")
         artistId = try unboxer.unbox(key: "artistId")
-        amgArtistId = try unboxer.unbox(key: "amgArtistId")
+        amgArtistId = unboxer.unbox(key: "amgArtistId")
         
         collectionType = try unboxer.unbox(key: "collectionType")
         collectionId = try unboxer.unbox(key: "collectionId")

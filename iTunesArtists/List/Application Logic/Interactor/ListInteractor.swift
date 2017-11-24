@@ -42,13 +42,16 @@ extension ListInteractor : ListInteractorInput {
     
     func searchAlbums(byArtistId artistId: Double, numberOfAlbums: Int = 2) {
         repository?.requestAlbumList(byArtistId: artistId, numberOfAlbums: numberOfAlbums, completionHandler: { (albums, error) in
-            guard let albums = albums else {
-                return
-            }
             let artistIndex = self.artistsAndAlbums?.index(where: { (item) -> Bool in
                 return item.artistId == artistId
             })
-//            artistsAndAlbums?.insert(, at: <#T##Int#>)
+            guard let albums = albums, let index = artistIndex else {
+                return
+            }
+            
+            for (i, album) in albums.enumerated() {
+                self.artistsAndAlbums?.insert(album, at: index + i)
+            }
         })
     }
     
