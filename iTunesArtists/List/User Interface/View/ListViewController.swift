@@ -65,6 +65,12 @@ extension ListViewController : ListViewInterface {
     func reloadTable() {
         tableView.reloadData()
     }
+    
+    func refreshCell(atIndexPath indexPath: IndexPath) {
+        tableView.beginUpdates()
+        tableView.reloadRows(at: [indexPath], with: .automatic)
+        tableView.endUpdates()
+    }
 }
 
 // MARK: - UISearchBarDelegate
@@ -96,7 +102,9 @@ extension ListViewController : UISearchBarDelegate {
 // MARK: - UITableViewDelegate
 
 extension ListViewController : UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        eventHandler?.userDidSelectRow(atIndexPath: indexPath)
+    }
 }
 
 // MARK: - UITableViewDataSource

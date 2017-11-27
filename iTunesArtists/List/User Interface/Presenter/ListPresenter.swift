@@ -14,8 +14,16 @@ class ListPresenter {
     weak var userInterface: ListViewInterface?
     var rootRouting: RootRouting?
     
-    init() {
-        
+    init() { }
+    
+    func convertAlbumIntoAlbumDisplayData(_ albums: [Album]) -> [AlbumDisplayData] {
+        var albumItems: [AlbumDisplayData] = []
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy"
+        for album in albums {
+            albumItems.append(AlbumDisplayData(name: album.collectionName ?? "Unknow", year: dateFormatter.string(from: album.releaseDate), thumbnailURL: album.artworkUrl100))
+        }
+        return albumItems
     }
 }
 
@@ -45,21 +53,21 @@ extension ListPresenter : ListModuleInterface {
         userInterface?.reloadTable()
     }
     
-    func didSelectRow(atIndexPath indexPath: IndexPath) {
-        
+    func userDidSelectRow(atIndexPath indexPath: IndexPath) {
+        guard let artist = interactor?.item(atIndexPath: indexPath) else {
+            return
+        }
+        let albums = convertAlbumIntoAlbumDisplayData(artist.albums)
+        rootRouting?.presentDetailInterface(withArtist: artist, albums: albums)
     }
     
     func setContent(toView view: ListItemViewProtocol, indexPath: IndexPath) {
         guard let item = interactor?.item(atIndexPath: indexPath) else {
             return
         }
-        var albums: [AlbumDisplayData] = []
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy"
-        for album in item.albums {
-            albums.append(AlbumDisplayData(name: album.collectionName ?? "Unknow", year: dateFormatter.string(from: album.releaseDate), thumbnailURL: album.artworkUrl60))
-        }
         view.set(name: item.artistName, musicGenre: item.primaryGenreName)
+        let itemAlbums = item.albums.count <= 2 ? item.albums : Array(item.albums[0..<2])
+        let albums = convertAlbumIntoAlbumDisplayData(itemAlbums)
         view.addAlbums(albums)
     }
 }
@@ -69,6 +77,14 @@ extension ListPresenter : ListModuleInterface {
 extension ListPresenter : ListInteractorOutput {
     
     func reloadData() {
-        userInterface?.reloadTable()
+        DispatchQueue.main.async {
+            self.userInterface?.reloadTable()
+        }
+    }
+    
+    func downloadedAlbums(atIndex index: Int) {
+        DispatchQueue.main.async {
+            self.userInterface?.refreshCell(atIndexPath: IndexPath(item: index, section: 0))
+        }
     }
 }

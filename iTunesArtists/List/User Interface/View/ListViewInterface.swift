@@ -10,4 +10,5 @@ import Foundation
 
 protocol ListViewInterface : class {
     func reloadTable()
+    func refreshCell(atIndexPath indexPath: IndexPath)
 }

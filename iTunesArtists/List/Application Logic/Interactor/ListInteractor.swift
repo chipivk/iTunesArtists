@@ -30,8 +30,8 @@ extension ListInteractor : ListInteractorInput {
                 print("Error: \(String(describing: error))")
                 return
             }
-            print("Artists: \(artistList)")
             self.artists = artistList
+            self.output?.reloadData()
             
             for artist in artistList {
                 self.searchAlbums(byArtistId: artist.artistId)
@@ -39,20 +39,23 @@ extension ListInteractor : ListInteractorInput {
         })
     }
     
-    func searchAlbums(byArtistId artistId: Double, numberOfAlbums: Int = 2) {
+    func searchAlbums(byArtistId artistId: Double, numberOfAlbums: Int? = nil) {
         repository?.requestAlbumList(byArtistId: artistId, numberOfAlbums: numberOfAlbums, completionHandler: { (albums, error) in
             let artist = self.artists?.first(where: { (a) -> Bool in
                 return a.artistId == artistId
             })
             
-            guard let albums = albums, var artistFounded = artist, albums.count > 0 else {
+            let albumsSorted = albums?.sorted(by: { (a1, a2) -> Bool in
+                return a1.releaseDate > a2.releaseDate
+            })
+            guard let albums = albumsSorted, var artistFounded = artist, albums.count > 0 else {
                 return
             }
             let index = self.artists!.index(of: artistFounded)!
             artistFounded.albums.removeAll()
             artistFounded.albums.append(contentsOf: albums)
             self.artists![index] = artistFounded
-            self.output?.reloadData()
+            self.output?.downloadedAlbums(atIndex: index)
         })
     }
     

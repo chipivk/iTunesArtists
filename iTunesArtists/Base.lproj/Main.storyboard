@@ -56,5 +56,42 @@
             </objects>
             <point key="canvasLocation" x="32.799999999999997" y="32.833583208395808"/>
         </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="9cS-QQ-DFq">
+            <objects>
+                <viewController storyboardIdentifier="detail_id" id="3Rc-lS-VPa" customClass="DetailViewController" customModule="iTunesArtists" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Pys-Tk-ep0"/>
+                        <viewControllerLayoutGuide type="bottom" id="x1j-B9-etn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vOJ-Ta-8KP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3Zp-VR-22T">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="3Rc-lS-VPa" id="rhb-u2-Cpz"/>
+                                    <outlet property="delegate" destination="3Rc-lS-VPa" id="TX6-y3-cZp"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3Zp-VR-22T" firstAttribute="leading" secondItem="vOJ-Ta-8KP" secondAttribute="leading" id="GNk-aR-Y7H"/>
+                            <constraint firstItem="3Zp-VR-22T" firstAttribute="top" secondItem="vOJ-Ta-8KP" secondAttribute="top" id="GUb-kF-OgM"/>
+                            <constraint firstAttribute="trailing" secondItem="3Zp-VR-22T" secondAttribute="trailing" id="hTD-Iq-gqy"/>
+                            <constraint firstItem="x1j-B9-etn" firstAttribute="top" secondItem="3Zp-VR-22T" secondAttribute="bottom" id="wT8-Xg-R7F"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="3Zp-VR-22T" id="4xm-oU-jxi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z9B-81-am5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="816.79999999999995" y="29.23538230884558"/>
+        </scene>
     </scenes>
 </document>

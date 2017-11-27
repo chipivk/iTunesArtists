@@ -13,5 +13,5 @@ typealias AlbumsCompletionBlock = (_ result: [Album]?, _ error: Error?) -> Void
 
 protocol iTunesAPIRepositoryInterface {
     func requestArtistList(byName name: String, completionHandler: @escaping CompletionBlock)
-    func requestAlbumList(byArtistId artistId: Double, numberOfAlbums: Int, completionHandler: @escaping AlbumsCompletionBlock)
+    func requestAlbumList(byArtistId artistId: Double, numberOfAlbums: Int?, completionHandler: @escaping AlbumsCompletionBlock)
 }

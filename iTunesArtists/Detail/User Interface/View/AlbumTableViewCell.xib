@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" indentationWidth="10" rowHeight="175" id="KGk-i7-Jjw" customClass="AlbumTableViewCell" customModule="iTunesArtists" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="327" height="175"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="327" height="174.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qhW-cL-GmE">
+                        <rect key="frame" x="113" y="10" width="100" height="100"/>
+                        <color key="backgroundColor" red="0.79651068650000001" green="0.79651068650000001" blue="0.79651068650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="100" id="46H-BR-WJa"/>
+                            <constraint firstAttribute="width" constant="100" id="pWI-zz-NPX"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cmE-yp-lIh">
+                        <rect key="frame" x="142" y="118" width="43.5" height="21"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nds-jn-0kJ">
+                        <rect key="frame" x="146.5" y="144" width="33" height="15.5"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="13"/>
+                        <color key="textColor" red="0.42745098040000001" green="0.43137254899999999" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="nds-jn-0kJ" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="0YZ-Fw-HTN"/>
+                    <constraint firstItem="qhW-cL-GmE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="2eO-nz-RnN"/>
+                    <constraint firstItem="nds-jn-0kJ" firstAttribute="top" secondItem="cmE-yp-lIh" secondAttribute="bottom" constant="5" id="38M-1O-1Q2"/>
+                    <constraint firstItem="cmE-yp-lIh" firstAttribute="top" secondItem="qhW-cL-GmE" secondAttribute="bottom" constant="8" id="7Mz-N0-dGc"/>
+                    <constraint firstItem="nds-jn-0kJ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="RqS-mp-N1x"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="nds-jn-0kJ" secondAttribute="bottom" constant="10" id="i83-eb-waq"/>
+                    <constraint firstItem="cmE-yp-lIh" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="jRN-x5-Qg5"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="nds-jn-0kJ" secondAttribute="trailing" constant="10" id="n9d-tt-dLm"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="cmE-yp-lIh" secondAttribute="trailing" constant="10" id="ow4-9a-Erz"/>
+                    <constraint firstItem="cmE-yp-lIh" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="taV-1a-rvm"/>
+                    <constraint firstItem="qhW-cL-GmE" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="xV3-ga-uxo"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="collectionNameLabel" destination="cmE-yp-lIh" id="58B-96-DcX"/>
+                <outlet property="thumbnailImageView" destination="qhW-cL-GmE" id="AHj-BD-YRd"/>
+                <outlet property="yearLabel" destination="nds-jn-0kJ" id="DVW-tF-92a"/>
+            </connections>
+            <point key="canvasLocation" x="37.5" y="119.5"/>
+        </tableViewCell>
+    </objects>
+</document>

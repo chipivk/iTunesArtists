@@ -39,8 +39,8 @@ extension iTunesAPIRepository : iTunesAPIRepositoryInterface {
         }
     }
     
-    func requestAlbumList(byArtistId artistId: Double, numberOfAlbums: Int = 2, completionHandler: @escaping AlbumsCompletionBlock) {
-        let url = String(format: albumsUrl, artistId, numberOfAlbums)
+    func requestAlbumList(byArtistId artistId: Double, numberOfAlbums: Int? = nil, completionHandler: @escaping AlbumsCompletionBlock) {
+        let url = String(format: albumsUrl, artistId, numberOfAlbums ?? 200)
 
         Alamofire.request(url, method: .get).responseObject { (response: DataResponse<ITunesAlbumsAPIResult>) in
             // handle response

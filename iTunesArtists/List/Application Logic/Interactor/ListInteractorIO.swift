@@ -10,7 +10,7 @@ import Foundation
 
 protocol ListInteractorInput: class {
     func searchArtist(withText text: String)
-    func searchAlbums(byArtistId artistId: Double, numberOfAlbums: Int)
+    func searchAlbums(byArtistId artistId: Double, numberOfAlbums: Int?)
     func numberOfSections() -> Int
     func numberOfItems(inSection section: Int) -> Int
     func item(atIndexPath indexPath: IndexPath) -> Artist
@@ -18,4 +18,5 @@ protocol ListInteractorInput: class {
 
 protocol ListInteractorOutput: class {
     func reloadData()
+    func downloadedAlbums(atIndex index: Int)
 }

@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0779093B1FCC09DF00DB5B22 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0779093A1FCC09DF00DB5B22 /* DetailViewController.swift */; };
+		0779093D1FCC19F500DB5B22 /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0779093C1FCC19F500DB5B22 /* DetailPresenter.swift */; };
+		0779093F1FCC1A0300DB5B22 /* DetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0779093E1FCC1A0300DB5B22 /* DetailInteractor.swift */; };
+		077909411FCC1A1400DB5B22 /* DetailInteractorIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077909401FCC1A1400DB5B22 /* DetailInteractorIO.swift */; };
+		077909431FCC1A2C00DB5B22 /* DetailModuleInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077909421FCC1A2C00DB5B22 /* DetailModuleInterface.swift */; };
+		077909451FCC1A9100DB5B22 /* DetailViewInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077909441FCC1A9100DB5B22 /* DetailViewInterface.swift */; };
+		077909481FCC225800DB5B22 /* AlbumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077909461FCC225600DB5B22 /* AlbumTableViewCell.swift */; };
+		077909491FCC225800DB5B22 /* AlbumTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 077909471FCC225600DB5B22 /* AlbumTableViewCell.xib */; };
+		0779094B1FCC2E3200DB5B22 /* AlbumItemViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0779094A1FCC2E3100DB5B22 /* AlbumItemViewProtocol.swift */; };
 		077AE0EE1FC6A82700DF5FAE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077AE0ED1FC6A82700DF5FAE /* AppDelegate.swift */; };
 		077AE0F31FC6A82700DF5FAE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 077AE0F11FC6A82700DF5FAE /* Main.storyboard */; };
 		077AE0F51FC6A82700DF5FAE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 077AE0F41FC6A82700DF5FAE /* Assets.xcassets */; };
@@ -36,6 +45,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0779093A1FCC09DF00DB5B22 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		0779093C1FCC19F500DB5B22 /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
+		0779093E1FCC1A0300DB5B22 /* DetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInteractor.swift; sourceTree = "<group>"; };
+		077909401FCC1A1400DB5B22 /* DetailInteractorIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInteractorIO.swift; sourceTree = "<group>"; };
+		077909421FCC1A2C00DB5B22 /* DetailModuleInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModuleInterface.swift; sourceTree = "<group>"; };
+		077909441FCC1A9100DB5B22 /* DetailViewInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewInterface.swift; sourceTree = "<group>"; };
+		077909461FCC225600DB5B22 /* AlbumTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumTableViewCell.swift; sourceTree = "<group>"; };
+		077909471FCC225600DB5B22 /* AlbumTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlbumTableViewCell.xib; sourceTree = "<group>"; };
+		0779094A1FCC2E3100DB5B22 /* AlbumItemViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumItemViewProtocol.swift; sourceTree = "<group>"; };
 		077AE0EA1FC6A82700DF5FAE /* iTunesArtists.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTunesArtists.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		077AE0ED1FC6A82700DF5FAE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		077AE0F21FC6A82700DF5FAE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -80,6 +98,94 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		077909301FCC094B00DB5B22 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				077909341FCC098300DB5B22 /* Routing */,
+				077909331FCC097900DB5B22 /* Application Logic */,
+				077909321FCC096F00DB5B22 /* Module Interface */,
+				077909311FCC096500DB5B22 /* User Interface */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		077909311FCC096500DB5B22 /* User Interface */ = {
+			isa = PBXGroup;
+			children = (
+				077909361FCC099100DB5B22 /* Presenter */,
+				077909351FCC098A00DB5B22 /* View */,
+			);
+			path = "User Interface";
+			sourceTree = "<group>";
+		};
+		077909321FCC096F00DB5B22 /* Module Interface */ = {
+			isa = PBXGroup;
+			children = (
+				077909421FCC1A2C00DB5B22 /* DetailModuleInterface.swift */,
+			);
+			path = "Module Interface";
+			sourceTree = "<group>";
+		};
+		077909331FCC097900DB5B22 /* Application Logic */ = {
+			isa = PBXGroup;
+			children = (
+				077909391FCC09AE00DB5B22 /* Interactor */,
+				077909381FCC09A700DB5B22 /* Manager */,
+				077909371FCC09A100DB5B22 /* Model */,
+			);
+			path = "Application Logic";
+			sourceTree = "<group>";
+		};
+		077909341FCC098300DB5B22 /* Routing */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Routing;
+			sourceTree = "<group>";
+		};
+		077909351FCC098A00DB5B22 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0779093A1FCC09DF00DB5B22 /* DetailViewController.swift */,
+				077909441FCC1A9100DB5B22 /* DetailViewInterface.swift */,
+				0779094A1FCC2E3100DB5B22 /* AlbumItemViewProtocol.swift */,
+				077909461FCC225600DB5B22 /* AlbumTableViewCell.swift */,
+				077909471FCC225600DB5B22 /* AlbumTableViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		077909361FCC099100DB5B22 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				0779093C1FCC19F500DB5B22 /* DetailPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		077909371FCC09A100DB5B22 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		077909381FCC09A700DB5B22 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		077909391FCC09AE00DB5B22 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				0779093E1FCC1A0300DB5B22 /* DetailInteractor.swift */,
+				077909401FCC1A1400DB5B22 /* DetailInteractorIO.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
 		077AE0E11FC6A82700DF5FAE = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +211,7 @@
 				077AE0FF1FC6A9D900DF5FAE /* RootRouting.swift */,
 				07896ED31FC6CB2000844DC5 /* Constants.swift */,
 				077AE1011FC6AA6900DF5FAE /* List */,
+				077909301FCC094B00DB5B22 /* Detail */,
 				077AE0F11FC6A82700DF5FAE /* Main.storyboard */,
 				077AE0F41FC6A82700DF5FAE /* Assets.xcassets */,
 				077AE0F61FC6A82700DF5FAE /* LaunchScreen.storyboard */,
@@ -295,6 +402,7 @@
 				077AE0F51FC6A82700DF5FAE /* Assets.xcassets in Resources */,
 				07896EE21FC82F5D00844DC5 /* ArtistTableViewCell.xib in Resources */,
 				077AE0F31FC6A82700DF5FAE /* Main.storyboard in Resources */,
+				077909491FCC225800DB5B22 /* AlbumTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,18 +478,26 @@
 				07896EDC1FC7094100844DC5 /* MediaItem.swift in Sources */,
 				077AE1181FC6AF8B00DF5FAE /* ListModuleInterface.swift in Sources */,
 				07896EE11FC82F5D00844DC5 /* ArtistTableViewCell.swift in Sources */,
+				077909481FCC225800DB5B22 /* AlbumTableViewCell.swift in Sources */,
 				077AE1001FC6A9D900DF5FAE /* RootRouting.swift in Sources */,
+				0779093B1FCC09DF00DB5B22 /* DetailViewController.swift in Sources */,
 				077AE1161FC6AF7500DF5FAE /* iTunesAPIRepository.swift in Sources */,
 				07896EDA1FC702DA00844DC5 /* Album.swift in Sources */,
+				077909411FCC1A1400DB5B22 /* DetailInteractorIO.swift in Sources */,
 				07896EDE1FC82CE100844DC5 /* ListItemViewProtocol.swift in Sources */,
 				07896ED61FC6D99500844DC5 /* ITunesArtistsAPIResult.swift in Sources */,
 				077AE11A1FC6B02300DF5FAE /* ListViewInterface.swift in Sources */,
 				077AE1121FC6AEF100DF5FAE /* ListInteractor.swift in Sources */,
+				077909431FCC1A2C00DB5B22 /* DetailModuleInterface.swift in Sources */,
+				077909451FCC1A9100DB5B22 /* DetailViewInterface.swift in Sources */,
 				077AE10C1FC6AE8F00DF5FAE /* ListViewController.swift in Sources */,
 				07B8AF6E1FC73F2800BFB91F /* ITunesAlbumsAPIResult.swift in Sources */,
+				0779093D1FCC19F500DB5B22 /* DetailPresenter.swift in Sources */,
 				07896EE81FC8411000844DC5 /* AlbumDisplayData.swift in Sources */,
 				07896ED81FC7023500844DC5 /* Artist.swift in Sources */,
 				07896EE41FC839FF00844DC5 /* AlbumView.swift in Sources */,
+				0779094B1FCC2E3200DB5B22 /* AlbumItemViewProtocol.swift in Sources */,
+				0779093F1FCC1A0300DB5B22 /* DetailInteractor.swift in Sources */,
 				077AE1101FC6AEE500DF5FAE /* ListInteractorIO.swift in Sources */,
 				077AE0EE1FC6A82700DF5FAE /* AppDelegate.swift in Sources */,
 				07896ED41FC6CB2000844DC5 /* Constants.swift in Sources */,

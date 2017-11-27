@@ -11,5 +11,6 @@ import Foundation
 struct Constants {
     struct StoryboardIdentifier {
         static let List = "list_id"
+        static let Detail = "detail_id"
     }
 }

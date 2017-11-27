@@ -12,6 +12,6 @@ protocol ListModuleInterface {
     func userDidEnter(text: String?)
     func numberOfSections() -> Int
     func numberOfItems(inSection section: Int) -> Int
-    func didSelectRow(atIndexPath indexPath: IndexPath)
+    func userDidSelectRow(atIndexPath indexPath: IndexPath)
     func setContent(toView view: ListItemViewProtocol, indexPath: IndexPath)
 }
